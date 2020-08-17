@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+  isAuth = false;
+
+  appareilOne = 'Machene a laver';
+  appareilTwo = 'Television';
+  appareilThree = 'Ordinateur';
+
+  constructor(){
+    setTimeout(() => {
+        this.isAuth = true;
+      }, 3000
+    );
+  }
+  onAllumer(){
+    alert("ecco mi lass")
+    console.log('On allume tout!')
+  }
 }
