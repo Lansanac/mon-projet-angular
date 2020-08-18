@@ -1,4 +1,14 @@
-<li class="list-group-item">
-  <h4> Appareil: {{appareilName}} -- Status: {{ getStatus()}} </h4>
-  <input type="text" class="from-control" [(ngModel)]="appareilName"> 
+<li [ngClass]="{'list-group-item': true,
+              'list-group-item-success': appareilStatus==='allumer',
+              'list-group-item-danger': appareilStatus==='éteint'}">
+  <!--div style="width: 20px; height: 20px; background-color:red;" 
+       *ngIf="appareilStatus === 'éteint'"></div-->
+  <h4 [ngStyle]="{colore: getColor()}"> Appareil: {{appareilName}} -- Status: {{ getStatus()}} </h4>
+  <!--input type="text" class="from-control" [(ngModel)]="appareilName"-->
+  <button class="btn btn-success" 
+          (click)="onSwitchOn()"
+          [disabled]="appareilStatus==='allumer'">Allumer</button>
+  <button class="btn btn-danger"
+          (click)="onSwitchOff()"
+          [disabled]="appareilStatus==='éteint'">Eteindre</button>
 </li>
